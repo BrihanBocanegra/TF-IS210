@@ -2,9 +2,8 @@ public class Perfiles {
     private String codigo;
     private String nombres;
     private String apellidos;
-    private String tipo;
     private String cargo;
-    
+
     public String getCodigo() {
         return codigo;
     }
@@ -23,12 +22,7 @@ public class Perfiles {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    public String getTipo() {
-        return tipo;
-    }
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    
     public String getCargo() {
         return cargo;
     }
@@ -36,12 +30,14 @@ public class Perfiles {
         this.cargo = cargo;
     }
 
-    public Perfiles(String codigo, String nombres, String apellidos, String tipo, String cargo) {
+    public Perfiles(String codigo, String nombres, String apellidos, String cargo) {
         this.codigo = codigo;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.tipo = tipo;
         this.cargo = cargo;
     }
+
+    
+
     
 }
