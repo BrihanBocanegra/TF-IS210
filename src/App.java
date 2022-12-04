@@ -23,16 +23,16 @@ public class App {
         System.out.println("Seleccione Una Opcion");
         int op = Integer.parseInt(leer.nextLine());
         String valor = "";
-        if (op!=valor.length()) {
+        // if (op!=valor.length()) {
             
-        }
+        // }
 
-        // if (op == 1) registrarSocursal();
-        // if (op == 2) mostrarSocursales();
-        // if (op == 3) registrarEmpleados();
-        // if (op == 4) registrarCliente();
-        // if (op == 5) agregarMascota();
-        // if (op == 6) registrarAtencion();
+        if (op == 1) registrarSocursal();
+        if (op == 2) mostrarSocursales();
+        if (op == 3) registrarEmpleados();
+        if (op == 4) registrarCliente();
+        if (op == 5) agregarMascota();
+        if (op == 6) registrarAtencion();
         
     }
 }
