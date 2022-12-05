@@ -274,8 +274,16 @@ public class App {
                 perfil = item;
             }
         }
-        
+
         listaAsignarIncidencia.add(new AsignarIncidencia(codigo, descripcion, incidencia, perfil));
     }
+
+    // Listar atencion
+    public static void listarAtencion() {
+        
+    }
+
+    // Cambniar estado atencion
+    
 
 }
