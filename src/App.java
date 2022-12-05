@@ -19,7 +19,7 @@ public class App {
     }
 
     public static void menu() {
-        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
+        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECNICO *****");
     
         JDialog.setDefaultLookAndFeelDecorated(true);
         Object[] selectionValues = { 
@@ -58,10 +58,10 @@ public class App {
                 listarTipoIncidencia();
                 break;
             case "5: Crear Incidencia":
-                registrarUsuario();
+                crearIncidencia();
                 break;
             case "6: Listar Incidencias":
-                listarPerfiles();
+                listarIncidencia();
                 break;
             case "7: Registrar Atencion":
                 registrarAtencion();
@@ -173,14 +173,14 @@ public class App {
 
     // REGISTRO DE INCIDENCIA
 
-    public static void registrarIncidencia() {
+    public static void crearIncidencia() {
         System.out.println("\n");
         System.out.println("****** REGISTRAR TIPO INCIDENCIA *****");
         System.out.println("Ingrese Proyecto: ");
         String proyecto = leer.nextLine();
         System.out.println("Ingrese Estado: ");
         String estado = leer.nextLine();
-        System.out.println("Ingrese Clitidad: ");
+        System.out.println("Ingrese Criticidad: ");
         String criticidad = leer.nextLine();
         System.out.println("Ingrese Aplicaciones Afectadas: ");
         String aplicacionesAfectadas = leer.nextLine();
@@ -206,13 +206,13 @@ public class App {
         for (Incidencia listaInci : listaIncidencia) {
             System.out.println((contador++) 
                                 + " - " + listaInci.getProyecto() 
-                                + " " + listaInci.getEstado() 
-                                + " " + listaInci.getCriticidad()
-                                + " " + listaInci.getAplicacionesAfectadas()
-                                + " " + listaInci.getFecha_registro()
-                                + " " + listaInci.getFecha_repertura()
-                                + " " + listaInci.getDescripcion_corta()
-                                + " " + listaInci.getDescripcion()
+                                + " || " + listaInci.getEstado()
+                                + " || " + listaInci.getCriticidad()
+                                + " || " + listaInci.getAplicacionesAfectadas()
+                                + " || " + listaInci.getFecha_registro()
+                                + " || " + listaInci.getFecha_repertura()
+                                + " || " + listaInci.getDescripcion_corta()
+                                + " || " + listaInci.getDescripcion()
                             );
         }
         System.out.println("\n");
