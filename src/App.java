@@ -19,30 +19,6 @@ public class App {
         menu();
     }
 
-    /* 
-    public class JOptionPaneMultiInput {
-        public static void main(String[] args) {
-           JTextField xField = new JTextField(5);
-           JTextField yField = new JTextField(5);
-     
-           JPanel myPanel = new JPanel();
-           myPanel.add(new JLabel("x:"));
-           myPanel.add(xField);
-           myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-           myPanel.add(new JLabel("y:"));
-           myPanel.add(yField);
-     
-           int result = JOptionPane.showConfirmDialog(null, myPanel, 
-                    "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
-           if (result == JOptionPane.OK_OPTION) {
-              System.out.println("x value: " + xField.getText());
-              System.out.println("y value: " + yField.getText());
-           }
-        }
-     
-    }
-    */
-
     public static void menu() {
         System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
     
@@ -88,7 +64,7 @@ public class App {
             case "6: Listar Incidencias":
                 listarIncidencia();
                 break;
-            case "7: Registrar Atencion":
+            case "7: Asignar Atención":
                 listarPerfiles();
                 break;
             default:
@@ -274,13 +250,8 @@ public class App {
             + " " + item.getDescripcion());
         }
 
-       
-
         System.out.println("Elija una Incidencia: ");
         int nIncidencia = Integer.parseInt(leer.nextLine());
-
-        // incidencia
-        // perfiles
 
         int contador = 0;
         Incidencia incidencia = null;
@@ -320,5 +291,5 @@ public class App {
         
     }
 
-    // Cambniar estado atencion
+    // Cambiar estado atencion
 }
