@@ -3,6 +3,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.*;
+<<<<<<< HEAD
+=======
+import java.awt.GridLayout;
+>>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
 
 public class App {
 
@@ -19,7 +23,11 @@ public class App {
     }
 
     public static void menu() {
+<<<<<<< HEAD
         System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECNICO *****");
+=======
+        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
+>>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
     
         JDialog.setDefaultLookAndFeelDecorated(true);
         Object[] selectionValues = { 
@@ -58,13 +66,22 @@ public class App {
                 listarTipoIncidencia();
                 break;
             case "5: Crear Incidencia":
+<<<<<<< HEAD
                 crearIncidencia();
+=======
+                registrarIncidencia();
+>>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
                 break;
             case "6: Listar Incidencias":
                 listarIncidencia();
                 break;
+<<<<<<< HEAD
             case "7: Registrar Atencion":
                 registrarAtencion();
+=======
+            case "7: Asignar Atención":
+                listarPerfiles();
+>>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
                 break;
             default:
             System.out.println("******");
@@ -72,7 +89,11 @@ public class App {
     }
 
     // REGISTRAR PERFILES
+<<<<<<< HEAD
     public static void registrarUsuario(){       
+=======
+    public static void registrarUsuario(){
+>>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
         String title = "REGISTRAR PERFIL";
         int dialog = 3;
 
@@ -170,32 +191,42 @@ public class App {
         menu();
     }
 
-
     // REGISTRO DE INCIDENCIA
+    public static void registrarIncidencia() {
+        JTextField proyecto = new JTextField(25);
+        JTextField estado = new JTextField(25);
+        JTextField criticidad = new JTextField(25);
+        JTextField aplicacionesAfectadas = new JTextField(25);
+        JTextField fecha_registro = new JTextField(25);
+        JTextField fecha_repertura = new JTextField(25);
+        JTextField descripcion_corta = new JTextField(25);
+        JTextField descripcion = new JTextField(25);
+  
+        JPanel myPanel = new JPanel(new GridLayout(8, 1));
+        myPanel.add(new JLabel("Ingrese Proyecto: "));
+        myPanel.add(proyecto);
+        myPanel.add(new JLabel("Ingrese Estado: "));
+        myPanel.add(estado);
+        myPanel.add(new JLabel("Ingrese Critidad: "));
+        myPanel.add(criticidad);
+        myPanel.add(new JLabel("Ingrese Aplicaciones Afectadas: "));
+        myPanel.add(aplicacionesAfectadas);
+        myPanel.add(new JLabel("Ingrese Fecha registro: "));
+        myPanel.add(fecha_registro);
+        myPanel.add(new JLabel("Ingrese Fecha Repertura: "));
+        myPanel.add(fecha_repertura);
+        myPanel.add(new JLabel("Ingrese Descripcion Corta: "));
+        myPanel.add(descripcion_corta);
+        myPanel.add(new JLabel("Ingrese Descripcion: "));
+        myPanel.add(descripcion);
+  
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+        "REGISTRO DE INCIDENCIA", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                listaIncidencia.add(new Incidencia(proyecto.getText(), estado.getText(), criticidad.getText(), aplicacionesAfectadas.getText(), fecha_registro.getText(), fecha_repertura.getText(), descripcion_corta.getText(), descripcion.getText()));
+                System.out.println("OK");
+            }
 
-    public static void crearIncidencia() {
-        System.out.println("\n");
-        System.out.println("****** REGISTRAR TIPO INCIDENCIA *****");
-        System.out.println("Ingrese Proyecto: ");
-        String proyecto = leer.nextLine();
-        System.out.println("Ingrese Estado: ");
-        String estado = leer.nextLine();
-        System.out.println("Ingrese Criticidad: ");
-        String criticidad = leer.nextLine();
-        System.out.println("Ingrese Aplicaciones Afectadas: ");
-        String aplicacionesAfectadas = leer.nextLine();
-        System.out.println("Ingrese Fecha registro: ");
-        String fecha_registro = leer.nextLine();
-        System.out.println("Ingrese Fecha Repertura: ");
-        String fecha_repertura = leer.nextLine();
-        System.out.println("Ingrese Descripcion Corta: ");
-        String descripcion_corta = leer.nextLine();
-        System.out.println("Ingrese Descripcion: ");
-        String descripcion = leer.nextLine();
-        
-        listaIncidencia.add(new Incidencia(proyecto, estado, criticidad, aplicacionesAfectadas, fecha_registro, fecha_repertura, descripcion_corta, descripcion));
-        
-        System.out.println("\nRegistro incidencia");
         menu();
     }
 
@@ -204,7 +235,7 @@ public class App {
         System.out.println("****** MOSTRAR INCIDENCIAS *****");
         int contador = 0;
         for (Incidencia listaInci : listaIncidencia) {
-            System.out.println((contador++) 
+            System.out.println((++contador)
                                 + " - " + listaInci.getProyecto() 
                                 + " || " + listaInci.getEstado()
                                 + " || " + listaInci.getCriticidad()
@@ -239,13 +270,8 @@ public class App {
             + " " + item.getDescripcion());
         }
 
-       
-
         System.out.println("Elija una Incidencia: ");
         int nIncidencia = Integer.parseInt(leer.nextLine());
-
-         // incidencia
-        // perfiles
 
         int contador = 0;
         Incidencia incidencia = null;
@@ -254,6 +280,7 @@ public class App {
             if(contador == nIncidencia){
                 item.setEstado("Asignado");
                 incidencia = item;
+                
             }
         }
 
@@ -262,7 +289,7 @@ public class App {
             i++;
             System.out.println(i+". "+item.getCodigo()+" "+item.getNombres()+" "+item.getApellidos() + " "+item.getCargo());
         }
-
+        
         System.out.println("Elija el Codigo del Personal para la atención: ");
         int codigPerfil = Integer.parseInt(leer.nextLine());;
         
@@ -284,7 +311,5 @@ public class App {
         
     }
 
-    // Cambniar estado atencion
-    
-
+    // Cambiar estado atencion
 }
