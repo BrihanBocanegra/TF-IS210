@@ -10,6 +10,7 @@ public class App {
     static List<TipoIncidencia> listaTipoIncidencia = new ArrayList<TipoIncidencia>();
     static List<Incidencia> listaIncidencia = new ArrayList<Incidencia>();
     static List<AtencionIncidencias> listaAtencioneIncidencias = new ArrayList<AtencionIncidencias>();
+    static List<AsignarIncidencia> listaAsignarIncidencia = new ArrayList<AsignarIncidencia>();
 
     static Scanner leer = new Scanner(System.in);
 
@@ -63,7 +64,7 @@ public class App {
                 listarPerfiles();
                 break;
             case "7: Registrar Atencion":
-                listarPerfiles();
+                registrarAtencion();
                 break;
             default:
             System.out.println("******");
@@ -218,6 +219,63 @@ public class App {
         menu();
     }
     
+    public static void registrarAtencion() {
+        System.out.println("\n");
+        String title = "REGISTRAR ATENCIÓN INCIDENCIA";
+        int dialog = 3;
+        String codigo = "A" + (int) (Math.random() * 50 + 1);
+        String descripcion = JOptionPane.showInputDialog(null, "Ingresar Descripcion", title, dialog);
+        
+        int i = 0;
+        for(Incidencia item : listaIncidencia){
+            i++;
+            System.out.println(i+". "+ " - " + item.getProyecto() 
+            + " " + item.getEstado() 
+            + " " + item.getCriticidad()
+            + " " + item.getAplicacionesAfectadas()
+            + " " + item.getFecha_registro()
+            + " " + item.getFecha_repertura()
+            + " " + item.getDescripcion_corta()
+            + " " + item.getDescripcion());
+        }
 
+       
+
+        System.out.println("Elija una Incidencia: ");
+        int nIncidencia = Integer.parseInt(leer.nextLine());
+
+         // incidencia
+        // perfiles
+
+        int contador = 0;
+        Incidencia incidencia = null;
+        for(Incidencia item : listaIncidencia){
+            contador++;
+            if(contador == nIncidencia){
+                incidencia = item;
+            }
+        }
+
+        i=0;
+        for(Perfiles item : listaPerfiles){
+            i++;
+            System.out.println(i+". "+item.getCodigo()+" "+item.getNombres()+" "+item.getApellidos() + " "+item.getCargo());
+        }
+
+        System.out.println("Elija el Codigo del Personal para la atención: ");
+        int codigPerfil = Integer.parseInt(leer.nextLine());;
+        
+
+        contador = 0;
+        Perfiles perfil = null;
+        for(Perfiles item : listaPerfiles){
+            contador++;
+            if(contador == codigPerfil){
+                perfil = item;
+            }
+        }
+        
+        listaAsignarIncidencia.add(new AsignarIncidencia(codigo, descripcion, incidencia, perfil));
+    }
 
 }
