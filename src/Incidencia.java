@@ -1,3 +1,4 @@
+import javax.swing.JTextField;
 
 public class Incidencia {
     private String proyecto;
@@ -8,6 +9,7 @@ public class Incidencia {
     private String fecha_repertura;
     private String descripcion_corta;
     private String descripcion;
+    
     public String getProyecto() {
         return proyecto;
     }
@@ -68,6 +70,13 @@ public class Incidencia {
         this.descripcion_corta = descripcion_corta;
         this.descripcion = descripcion;
     }
-    
+    public Incidencia() {
+    }
+    /*
+    public Incidencia(JTextField proyecto, JTextField estado, JTextField criticidad2,
+            JTextField aplicacionesAfectadas, JTextField fecha_registro, JTextField fecha_repertura,
+            JTextField descripcion_corta, JTextField descripcion) {
+    }
+    */
 
 }

@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.GridLayout;
 
 public class App {
 
-    static List<Perfiles> listaperfiles = new ArrayList<Perfiles>();
+    static List<Perfiles> listaPerfiles = new ArrayList<Perfiles>();
     static List<TipoIncidencia> listaTipoIncidencia = new ArrayList<TipoIncidencia>();
     static List<Incidencia> listaIncidencia = new ArrayList<Incidencia>();
     static List<AtencionIncidencias> listaAtencioneIncidencias = new ArrayList<AtencionIncidencias>();
@@ -13,126 +15,221 @@ public class App {
     static Scanner leer = new Scanner(System.in);
 
     public static void main(String[] args) throws Exception {
-        // System.out.println("Hello, World!");
         menu();
     }
 
+    /* 
+    public class JOptionPaneMultiInput {
+        public static void main(String[] args) {
+           JTextField xField = new JTextField(5);
+           JTextField yField = new JTextField(5);
+     
+           JPanel myPanel = new JPanel();
+           myPanel.add(new JLabel("x:"));
+           myPanel.add(xField);
+           myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+           myPanel.add(new JLabel("y:"));
+           myPanel.add(yField);
+     
+           int result = JOptionPane.showConfirmDialog(null, myPanel, 
+                    "Please Enter X and Y Values", JOptionPane.OK_CANCEL_OPTION);
+           if (result == JOptionPane.OK_OPTION) {
+              System.out.println("x value: " + xField.getText());
+              System.out.println("y value: " + yField.getText());
+           }
+        }
+     
+    }
+    */
 
     public static void menu() {
-        System.out.println("****** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
-        System.out.println("1: Registrar Perfil");
-        System.out.println("2: Listar Perfiles");
+        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
+    
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        Object[] selectionValues = { 
+            "1: Registrar Perfil", 
+            "2: Listar Perfiles", 
+            "3: Registrar Tipo Incidencia",
+            "4: Listar Tipo Incidencia",
+            "5: Crear Incidencia",
+            "6: Listar Incidencias",
+            "7: Registrar Atencion"
+        };
 
-        System.out.println("3: Registrar Tipo Incidencia");
-        System.out.println("4: Listar Tipo Incidencia");
-
-        System.out.println("5: Crear Incidencia");
-        System.out.println("5: Listar Incidencias");
-
-        System.out.println("7: Registrar Atencion");
-        System.out.println("Seleccione Una Opcion");
-        int op = Integer.parseInt(leer.nextLine());
-        String valor = "";
-        // if (op!=valor.length()) {
-            
-        // }
-
-        if (op == 1) registrarPerfil();
-        if (op == 2) listarPerfiles();
-        if (op == 3) registrarTipoIncidencia();
-        if (op == 4) listarTipoIncidencia();
-        // if (op == 5) agregarMascota();
-        // if (op == 6) registrarAtencion();
+        String initialSelection = "";
+        Object selection = JOptionPane.showInputDialog(
+            null, 
+            "Selecione una opción:",
+            "SISTEMA DE ATENCIÓN",
+            JOptionPane.QUESTION_MESSAGE, 
+            null, 
+            selectionValues, 
+            initialSelection
+            );
         
+        String op = (String) selection;
+        switch (op) {
+            case "1: Registrar Perfil":
+                registrarUsuario();
+                break;
+            case "2: Listar Perfiles":
+                listarPerfiles();
+                break;
+            case "3: Registrar Tipo Incidencia":
+                registrarTipoIncidencia();
+                break;
+            case "4: Listar Tipo Incidencia":
+                listarTipoIncidencia();
+                break;
+            case "5: Crear Incidencia":
+                registrarIncidencia();
+                break;
+            case "6: Listar Incidencias":
+                listarIncidencia();
+                break;
+            case "7: Registrar Atencion":
+                listarPerfiles();
+                break;
+            default:
+            System.out.println("******");
+        }
     }
 
+    // REGISTRAR PERFILES
+    public static void registrarUsuario(){       
+        String title = "REGISTRAR PERFIL";
+        int dialog = 3;
 
+        String codigo = "A" + (int) (Math.random() * 50 + 1);
+        String nombres = JOptionPane.showInputDialog(null, "Ingresar nombres", title, dialog);
+        String apellidos = JOptionPane.showInputDialog(null,"Ingresar apellidos", title, dialog);
 
-
-
-
-    public static void registrarPerfil() {
-        System.out.println("\n");
-        System.out.println("****** REGISTRAR PERFILES *****");
-        System.out.println("Ingrese Codigo del Usuario: ");
-        String codigo = leer.nextLine();
-        System.out.println("Ingrese Nombres: ");
-        String nombres = leer.nextLine();
-        System.out.println("Ingrese Apellidos: ");
-        String apellidos = leer.nextLine();
-        System.out.println("Ingrese Cargo: ");
-        String cargo = leer.nextLine();
+        Object[] selectionValues = { 
+            "Administrador",
+            "Operario", 
+            "Invitado"
+        };
+        Object cargo = JOptionPane.showInputDialog(
+            null,
+            "Seleccione su cargo",
+            title,
+            dialog, 
+            null,
+            selectionValues,
+            "Administrador"
+            );
         
-        listaperfiles.add(new Perfiles(codigo, nombres,apellidos, cargo));
-        System.out.println("\nRegistro el perfil");
+        // RESUMEN
+        String lineSep = System.lineSeparator();
+        StringBuilder result = new StringBuilder();
+        result.append("Registro completo").append(lineSep).append(lineSep);
+        result.append("Código: ").append(codigo).append(lineSep);
+        result.append("Nombres: ").append(nombres).append(lineSep);
+        result.append("Apellidos: ").append(apellidos).append(lineSep);
+        result.append("Cargo: ").append(cargo).append(lineSep);
+          
+        listaPerfiles.add(new Perfiles(codigo, nombres, apellidos, (String) cargo));
+        JOptionPane.showMessageDialog(null, result.toString(), title, dialog = 1);
+
         menu();
     }
 
+    // LISTAR PERFILES
     public static void listarPerfiles() {
         System.out.println("\n");
         System.out.println("****** MOSTRAR PERFILES *****");
         int contador = 0;
-        for (Perfiles perfiles : listaperfiles) {
-            System.out.println((contador++) + " - " + perfiles.getCodigo() + " " + perfiles.getNombres() + " " + perfiles.getApellidos() + " " + perfiles.getCargo());
+        for (Perfiles item : listaPerfiles) {
+            System.out.println((++contador) + " - " + item.getCodigo() + " " + item.getNombres() + " " + item.getApellidos() + " " + item.getCargo());
         }
         System.out.println("\n");
         menu();
     }
 
-
-    // CREAR TIPOS INCIDENCIA
-
+    // CREAR TIPO DE INCIDENCIA
     public static void registrarTipoIncidencia() {
-        System.out.println("\n");
-        System.out.println("****** REGISTRAR TIPO INCIDENCIA *****");
-        System.out.println("Ingrese Codigo: ");
-        String codigo = leer.nextLine();
-        System.out.println("Ingrese Descripcion: ");
-        String descripcion = leer.nextLine();
+        String title = "REGISTRAR TIPO DE INCIDENCIA";
+        int dialog = 3;        
         
+        Object[] selectionValues = { 
+            "Severidad A", 
+            "Severidad B", 
+            "Severidad C"  
+        };
         
-        listaTipoIncidencia.add(new TipoIncidencia(codigo, descripcion));
-        System.out.println("\nRegistro el tipo incidencia");
+        Object codigo = JOptionPane.showInputDialog(
+            null,
+            "Seleccione una opcion",
+            title,
+            dialog,
+            null,           
+            selectionValues,
+            "Severidad A"
+            );
+        
+        String descripcion = JOptionPane.showInputDialog(null, "Ingresar nombres", title, dialog);
+        
+        // RESUMEN
+        String lineSep = System.lineSeparator();
+        StringBuilder result = new StringBuilder();
+        result.append("Registro completo").append(lineSep).append(lineSep);
+        result.append("Código: ").append(codigo).append(lineSep);
+        result.append("Descripción: ").append(descripcion).append(lineSep);
+        
+        listaTipoIncidencia.add(new TipoIncidencia((String) codigo, descripcion));
+        JOptionPane.showMessageDialog(null, result.toString(), title, dialog = 1);
+        
         menu();
     }
 
+    // LISTAR TIPO DE INCIDENCIA
     public static void listarTipoIncidencia() {
         System.out.println("\n");
         System.out.println("****** MOSTRAR TIPO INCIDENCIA *****");
         int contador = 0;
-        for (TipoIncidencia tipoIncidencia : listaTipoIncidencia) {
-            System.out.println((contador++) + " - " + tipoIncidencia.getCodigo() + " " + tipoIncidencia.getDescripcion());
+        for (TipoIncidencia item : listaTipoIncidencia) {
+            System.out.println((++contador) + ".- || Severidad: " + item.getCodigo() + " || Descripción: " + item.getDescripcion());
         }
         System.out.println("\n");
         menu();
     }
 
-
     // REGISTRO DE INCIDENCIA
-
     public static void registrarIncidencia() {
-        System.out.println("\n");
-        System.out.println("****** REGISTRAR TIPO INCIDENCIA *****");
-        System.out.println("Ingrese Proyecto: ");
-        String proyecto = leer.nextLine();
-        System.out.println("Ingrese Estado: ");
-        String estado = leer.nextLine();
-        System.out.println("Ingrese Clitidad: ");
-        String criticidad = leer.nextLine();
-        System.out.println("Ingrese Aplicaciones Afectadas: ");
-        String aplicacionesAfectadas = leer.nextLine();
-        System.out.println("Ingrese Fecha registro: ");
-        String fecha_registro = leer.nextLine();
-        System.out.println("Ingrese Fecha Repertura: ");
-        String fecha_repertura = leer.nextLine();
-        System.out.println("Ingrese Descripcion Corta: ");
-        String descripcion_corta = leer.nextLine();
-        System.out.println("Ingrese Descripcion: ");
-        String descripcion = leer.nextLine();
-        
-        listaIncidencia.add(new Incidencia(proyecto, estado, criticidad, aplicacionesAfectadas, fecha_registro, fecha_repertura, descripcion_corta, descripcion));
-        
-        System.out.println("\nRegistro incidencia");
+        JTextField proyecto = new JTextField(25);
+        JTextField estado = new JTextField(25);
+        JTextField criticidad = new JTextField(25);
+        JTextField aplicacionesAfectadas = new JTextField(25);
+        JTextField fecha_registro = new JTextField(25);
+        JTextField fecha_repertura = new JTextField(25);
+        JTextField descripcion_corta = new JTextField(25);
+        JTextField descripcion = new JTextField(25);
+  
+        JPanel myPanel = new JPanel(new GridLayout(8, 1));
+        myPanel.add(new JLabel("Ingrese Proyecto: "));
+        myPanel.add(proyecto);
+        myPanel.add(new JLabel("Ingrese Estado: "));
+        myPanel.add(estado);
+        myPanel.add(new JLabel("Ingrese Clitidad: "));
+        myPanel.add(criticidad);
+        myPanel.add(new JLabel("Ingrese Aplicaciones Afectadas: "));
+        myPanel.add(aplicacionesAfectadas);
+        myPanel.add(new JLabel("Ingrese Fecha registro: "));
+        myPanel.add(fecha_registro);
+        myPanel.add(new JLabel("Ingrese Fecha Repertura: "));
+        myPanel.add(fecha_repertura);
+        myPanel.add(new JLabel("Ingrese Descripcion Corta: "));
+        myPanel.add(descripcion_corta);
+        myPanel.add(new JLabel("Ingrese Descripcion: "));
+        myPanel.add(descripcion);
+  
+        int result = JOptionPane.showConfirmDialog(null, myPanel, 
+        "REGISTRO DE INCIDENCIA", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                listaIncidencia.add(new Incidencia(proyecto.getText(), estado.getText(), criticidad.getText(), aplicacionesAfectadas.getText(), fecha_registro.getText(), fecha_repertura.getText(), descripcion_corta.getText(), descripcion.getText()));
+                System.out.println("OK");
+            }
+
         menu();
     }
 
@@ -153,9 +250,7 @@ public class App {
                             );
         }
         System.out.println("\n");
+        
         menu();
     }
-    
-
-
 }
