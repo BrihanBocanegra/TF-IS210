@@ -252,7 +252,9 @@ public class App {
         for(Incidencia item : listaIncidencia){
             contador++;
             if(contador == nIncidencia){
+                item.setEstado("Asignado");
                 incidencia = item;
+                
             }
         }
 
