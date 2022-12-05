@@ -67,7 +67,7 @@ public class App {
                 listarIncidencia();
                 break;
             case "7: Asignar Atención":
-                listarPerfiles();
+                registrarAtencion();
                 break;
             default:
             System.out.println("******");
