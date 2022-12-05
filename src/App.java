@@ -169,4 +169,55 @@ public class App {
         menu();
     }
 
+
+    // REGISTRO DE INCIDENCIA
+
+    public static void registrarIncidencia() {
+        System.out.println("\n");
+        System.out.println("****** REGISTRAR TIPO INCIDENCIA *****");
+        System.out.println("Ingrese Proyecto: ");
+        String proyecto = leer.nextLine();
+        System.out.println("Ingrese Estado: ");
+        String estado = leer.nextLine();
+        System.out.println("Ingrese Clitidad: ");
+        String criticidad = leer.nextLine();
+        System.out.println("Ingrese Aplicaciones Afectadas: ");
+        String aplicacionesAfectadas = leer.nextLine();
+        System.out.println("Ingrese Fecha registro: ");
+        String fecha_registro = leer.nextLine();
+        System.out.println("Ingrese Fecha Repertura: ");
+        String fecha_repertura = leer.nextLine();
+        System.out.println("Ingrese Descripcion Corta: ");
+        String descripcion_corta = leer.nextLine();
+        System.out.println("Ingrese Descripcion: ");
+        String descripcion = leer.nextLine();
+        
+        listaIncidencia.add(new Incidencia(proyecto, estado, criticidad, aplicacionesAfectadas, fecha_registro, fecha_repertura, descripcion_corta, descripcion));
+        
+        System.out.println("\nRegistro incidencia");
+        menu();
+    }
+
+    public static void listarIncidencia() {
+        System.out.println("\n");
+        System.out.println("****** MOSTRAR INCIDENCIAS *****");
+        int contador = 0;
+        for (Incidencia listaInci : listaIncidencia) {
+            System.out.println((contador++) 
+                                + " - " + listaInci.getProyecto() 
+                                + " " + listaInci.getEstado() 
+                                + " " + listaInci.getCriticidad()
+                                + " " + listaInci.getAplicacionesAfectadas()
+                                + " " + listaInci.getFecha_registro()
+                                + " " + listaInci.getFecha_repertura()
+                                + " " + listaInci.getDescripcion_corta()
+                                + " " + listaInci.getDescripcion()
+                            );
+        }
+        System.out.println("\n");
+        menu();
+    }
+    
+
+
 }
