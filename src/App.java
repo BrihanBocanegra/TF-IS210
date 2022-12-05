@@ -20,7 +20,7 @@ public class App {
     }
 
     public static void menu() {
-        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
+        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECNICO *****");
     
         JDialog.setDefaultLookAndFeelDecorated(true);
         Object[] selectionValues = { 
@@ -59,13 +59,15 @@ public class App {
                 listarTipoIncidencia();
                 break;
             case "5: Crear Incidencia":
+                // crearIncidencia();
+                // crearIncidencia
                 registrarIncidencia();
                 break;
             case "6: Listar Incidencias":
                 listarIncidencia();
                 break;
             case "7: Asignar Atención":
-                listarPerfiles();
+                registrarAtencion();
                 break;
             default:
             System.out.println("******");
@@ -269,7 +271,7 @@ public class App {
             i++;
             System.out.println(i+". "+item.getCodigo()+" "+item.getNombres()+" "+item.getApellidos() + " "+item.getCargo());
         }
-
+        
         System.out.println("Elija el Codigo del Personal para la atención: ");
         int codigPerfil = Integer.parseInt(leer.nextLine());;
         
