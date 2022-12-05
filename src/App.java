@@ -254,7 +254,6 @@ public class App {
             if(contador == nIncidencia){
                 item.setEstado("Asignado");
                 incidencia = item;
-                
             }
         }
 
