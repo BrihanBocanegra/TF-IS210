@@ -4,8 +4,10 @@ import java.util.List;
 public class AsignarIncidencia {
     private String codigo;
     private String descripcion;
-    private List<Incidencia> listaIncidencia = new ArrayList<Incidencia>();
-    private List<Perfiles> listaPerfiles = new ArrayList<Perfiles>();
+    private Incidencia incidencia;
+    private Perfiles perfiles;
+    public List<Incidencia> listaIncidencia = new ArrayList<Incidencia>();
+    public List<Perfiles> listaPerfiles = new ArrayList<Perfiles>();
     public String getCodigo() {
         return codigo;
     }
@@ -30,12 +32,24 @@ public class AsignarIncidencia {
     public void setListaPerfiles(List<Perfiles> listaPerfiles) {
         this.listaPerfiles = listaPerfiles;
     }
-    public AsignarIncidencia(String codigo, String descripcion, List<Incidencia> listaIncidencia,
-            List<Perfiles> listaPerfiles) {
+    public Incidencia getIncidencia() {
+        return incidencia;
+    }
+    public void setIncidencia(Incidencia incidencia) {
+        this.incidencia = incidencia;
+    }
+    public Perfiles getPerfiles() {
+        return perfiles;
+    }
+    public void setPerfiles(Perfiles perfiles) {
+        this.perfiles = perfiles;
+    }
+    
+    public AsignarIncidencia(String codigo, String descripcion, Incidencia incidencia,Perfiles perfiles) {
         this.codigo = codigo;
         this.descripcion = descripcion;
-        this.listaIncidencia = listaIncidencia;
-        this.listaPerfiles = listaPerfiles;
+        this.incidencia = incidencia;
+        this.perfiles = perfiles;
     }
     
 }
