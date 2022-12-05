@@ -211,7 +211,7 @@ public class App {
         myPanel.add(proyecto);
         myPanel.add(new JLabel("Ingrese Estado: "));
         myPanel.add(estado);
-        myPanel.add(new JLabel("Ingrese Clitidad: "));
+        myPanel.add(new JLabel("Ingrese Critidad: "));
         myPanel.add(criticidad);
         myPanel.add(new JLabel("Ingrese Aplicaciones Afectadas: "));
         myPanel.add(aplicacionesAfectadas);
@@ -239,7 +239,7 @@ public class App {
         System.out.println("****** MOSTRAR INCIDENCIAS *****");
         int contador = 0;
         for (Incidencia listaInci : listaIncidencia) {
-            System.out.println((contador++) 
+            System.out.println((++contador)
                                 + " - " + listaInci.getProyecto() 
                                 + " || " + listaInci.getEstado()
                                 + " || " + listaInci.getCriticidad()
