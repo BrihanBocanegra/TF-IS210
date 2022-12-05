@@ -3,10 +3,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import javax.swing.*;
-<<<<<<< HEAD
-=======
 import java.awt.GridLayout;
->>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
 
 public class App {
 
@@ -23,11 +20,7 @@ public class App {
     }
 
     public static void menu() {
-<<<<<<< HEAD
         System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECNICO *****");
-=======
-        System.out.println("***** SISTEMA DE ATENCIÓN DE SOPORTE TECTINO *****");
->>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
     
         JDialog.setDefaultLookAndFeelDecorated(true);
         Object[] selectionValues = { 
@@ -66,22 +59,15 @@ public class App {
                 listarTipoIncidencia();
                 break;
             case "5: Crear Incidencia":
-<<<<<<< HEAD
-                crearIncidencia();
-=======
+                // crearIncidencia();
+                // crearIncidencia
                 registrarIncidencia();
->>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
                 break;
             case "6: Listar Incidencias":
                 listarIncidencia();
                 break;
-<<<<<<< HEAD
-            case "7: Registrar Atencion":
-                registrarAtencion();
-=======
             case "7: Asignar Atención":
                 listarPerfiles();
->>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
                 break;
             default:
             System.out.println("******");
@@ -89,11 +75,7 @@ public class App {
     }
 
     // REGISTRAR PERFILES
-<<<<<<< HEAD
-    public static void registrarUsuario(){       
-=======
     public static void registrarUsuario(){
->>>>>>> 6de337d1d77fc83ab217df12c971c0f3be5e95dc
         String title = "REGISTRAR PERFIL";
         int dialog = 3;
 
