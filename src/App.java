@@ -45,6 +45,7 @@ public class App {
             );
         
         String op = (String) selection;
+        System.out.println(op);
         switch (op) {
             case "1: Registrar Perfil":
                 registrarUsuario();
@@ -66,7 +67,7 @@ public class App {
             case "6: Listar Incidencias":
                 listarIncidencia();
                 break;
-            case "7: Asignar Atención":
+            case "7: Registrar Atencion":
                 registrarAtencion();
                 break;
             default:
@@ -262,7 +263,6 @@ public class App {
             if(contador == nIncidencia){
                 item.setEstado("Asignado");
                 incidencia = item;
-                
             }
         }
 
